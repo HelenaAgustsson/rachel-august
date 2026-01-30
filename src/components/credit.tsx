@@ -6,6 +6,11 @@ interface CreditProps {
 
 export default function CreditLine({ credit }: CreditProps) {
     return (
-        <div>{credit.title}</div>
+        <div className="my-5">
+            <div className="font-bold">{credit.title}</div>
+            <div>{credit.role}</div>
+            <div>{credit.date}</div>
+        </div>
+
     )
 }
