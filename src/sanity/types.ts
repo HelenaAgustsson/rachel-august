@@ -146,15 +146,17 @@ export type AllSanitySchemaTypes = Credit | SanityImagePaletteSwatch | SanityIma
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CREDITS_QUERY
-// Query: *[_type == "credit"]{  title,}
+// Query: *[_type == "credit"]{  title,  role,  date}
 export type CREDITS_QUERYResult = Array<{
   title: string;
+  role: string;
+  date: string;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"credit\"]{\n  title,\n}": CREDITS_QUERYResult;
+    "*[_type == \"credit\"]{\n  title,\n  role,\n  date\n}": CREDITS_QUERYResult;
   }
 }
