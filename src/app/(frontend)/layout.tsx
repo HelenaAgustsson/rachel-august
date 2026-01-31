@@ -1,5 +1,6 @@
 import { SanityLive } from '@/sanity/lib/live'
 import { Header } from '@/components/header/header'
+import { Navbar } from '@/components/navbar/navbar'
 
 export default function FrontendLayout({
     children,
@@ -7,9 +8,12 @@ export default function FrontendLayout({
     children: React.ReactNode
 }>) {
     return (
-        <div className="container mx-auto grid grid-cols-1 gap-6 p-12">
+        <div>
+            <div className="flex justify-end">
+                <Navbar />
+            </div>
             <Header />
-            {children}
+            <div className="container mx-auto">{children}</div>
             <SanityLive />
         </div>
     )

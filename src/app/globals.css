@@ -8,4 +8,7 @@
   --color-orange-light: #F48C06;
   --color-yellow-dark: #FAA307;
   --color-yellow-light: #FFBA08;
+  --color-amber: oklch(98.7% 0.022 95.277);
 }
+
+

@@ -3,12 +3,8 @@ import Image from "next/image"
 
 export const Header = () => {
     return (
-        <header>
-            <div className="flex justify-between">
-                <h1 className="text-4xl font-bold text-red-dark">Rachel August</h1>
-                <Navbar />
-            </div>
-            <div className="h-[20rem] flex justify-center my-3 bg-linear-to-r from-orange-dark to-yellow-light">
+        <header className="mt-10 mb-30 container mx-auto">
+            <div className="flex my-3 gap-5">
                 <div className="flex flex-col justify-center">
                     <div className="w-[300px] h-[300px]">
                         <Image
@@ -21,6 +17,11 @@ export const Header = () => {
                         />
                     </div>
                 </div>
+                <div className="flex flex-col justify-center">
+                    <h1 className="text-8xl font-bold text-red-dark">RACHEL AUGUST</h1>
+                    <h2 className="text-3xl font-bold text-red-dark">Actress & Voiceover Artist</h2>
+                </div>
+
             </div>
         </header>
     )
