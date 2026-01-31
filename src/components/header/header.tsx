@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <header>
             <div className="flex justify-between">
-                <h1 className="text-4xl font-bold">Rachel August</h1>
+                <h1 className="text-4xl font-bold text-red-dark">Rachel August</h1>
                 <Navbar />
             </div>
             <div className="h-[20rem] flex justify-center my-3 bg-linear-to-r from-orange-dark to-yellow-light">
