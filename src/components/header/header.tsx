@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <header>
             <div className="flex justify-between">
-                <h1 className="text-4xl font-bold">Rachel August</h1>
+                <h1 className="text-4xl font-bold text-red-dark">Rachel August</h1>
                 <Navbar />
             </div>
             <div className="h-[20rem] flex justify-center my-3 bg-linear-to-r from-orange-dark to-yellow-light">
@@ -14,9 +14,10 @@ export const Header = () => {
                         <Image
                             src="/rachel.jpeg"
                             className="rounded-full"
-                            width={500}
-                            height={500}
+                            width={300}
+                            height={300}
                             alt="Picture of the author"
+                            preload={true}
                         />
                     </div>
                 </div>
