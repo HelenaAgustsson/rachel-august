@@ -14,9 +14,10 @@ export const Header = () => {
                         <Image
                             src="/rachel.jpeg"
                             className="rounded-full"
-                            width={500}
-                            height={500}
+                            width={300}
+                            height={300}
                             alt="Picture of the author"
+                            preload={true}
                         />
                     </div>
                 </div>
