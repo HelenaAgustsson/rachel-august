@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-linear-to-r from-orange-dark to-yellow-light">
+      <body className="bg-fixed bg-linear-to-b md:bg-linear-to-r from-orange-dark via-yellow-dark to-yellow-light">
         {children}
       </body>
     </html>
