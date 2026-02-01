@@ -12,8 +12,7 @@ export default function FrontendLayout({
             <div className="flex justify-end">
                 <Navbar />
             </div>
-            <Header />
-            <div className="container mx-auto">{children}</div>
+            {children}
             <SanityLive />
         </div>
     )
