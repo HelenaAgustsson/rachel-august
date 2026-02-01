@@ -6,7 +6,8 @@ export const CREDITS_QUERY = defineQuery(`*[_type == "credit"]{
   date
 }`)
 
-export const INFO_QUERY = defineQuery(`*[_type == "info"]{
+export const PROFILE_QUERY = defineQuery(`*[_type == "summary" && description=="Profile"][0]{
   title,
-  blurb
+  description,
+  body
 }`)

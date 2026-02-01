@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const infoType = defineType({
-  name: 'info',
-  title: 'Info',
+export const summaryType = defineType({
+  name: 'summary',
+  title: 'Summary',
   type: 'document',
   fields: [
     defineField({
@@ -11,7 +11,12 @@ export const infoType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'blurb',
+      name: 'description',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'body',
       type: 'array',
       of: [{type: 'block'}],
       validation: (rule) => rule.required(),
