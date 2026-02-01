@@ -1,7 +1,11 @@
-import Credits from "@/components/credits/credits";
+
 import { Header } from "@/components/header/header";
+import { INFO_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export default async function Page() {
+    const { data: info } = await sanityFetch({ query: INFO_QUERY })
+
     return (
         <div>
             <Header />
@@ -9,7 +13,7 @@ export default async function Page() {
                 <section className="md:w-2/3 p-5 bg-orange-100 text-red-dark rounded-md">
                     <h3 className="text-xl font-bold">Hi!</h3>
                     <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
                     </div>
                 </section>
             </main>
