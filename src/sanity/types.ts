@@ -13,6 +13,34 @@
  */
 
 // Source: schema.json
+export type Summary = {
+  _id: string;
+  _type: "summary";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description: string;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
 export type Credit = {
   _id: string;
   _type: "credit";
@@ -142,7 +170,7 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = Credit | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
+export type AllSanitySchemaTypes = Summary | Credit | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CREDITS_QUERY
@@ -152,11 +180,15 @@ export type CREDITS_QUERYResult = Array<{
   role: string;
   date: string;
 }>;
+// Variable: PROFILE_QUERY
+// Query: *[_type == "summary" && page=="Home"]{  title,  description,  body}
+export type PROFILE_QUERYResult = Array<never>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"credit\"]{\n  title,\n  role,\n  date\n}": CREDITS_QUERYResult;
+    "*[_type == \"summary\" && page==\"Home\"]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
   }
 }
