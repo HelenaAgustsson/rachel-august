@@ -181,14 +181,35 @@ export type CREDITS_QUERYResult = Array<{
   date: string;
 }>;
 // Variable: PROFILE_QUERY
-// Query: *[_type == "summary" && page=="Home"]{  title,  description,  body}
-export type PROFILE_QUERYResult = Array<never>;
+// Query: *[_type == "summary" && description=="Profile"][0]{  title,  description,  body}
+export type PROFILE_QUERYResult = {
+  title: string;
+  description: "Profile";
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"credit\"]{\n  title,\n  role,\n  date\n}": CREDITS_QUERYResult;
-    "*[_type == \"summary\" && page==\"Home\"]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
+    "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
   }
 }
