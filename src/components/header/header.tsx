@@ -3,9 +3,9 @@ import Image from "next/image"
 
 export const Header = () => {
     return (
-        <header className="mt-10 mb-30 mx-5 md:ml-20 md:mr-10 lg:pl-10 flex justify-center lg:justify-start ">
+        <header className="mt-10 mb-30 mx-auto flex justify-center">
             <div className="flex flex-col md:flex-row gap-5">
-                <div className="flex flex-row md:flex-col justify-center">
+                <div className="flex justify-center">
                     <div className="w-[300px] h-[300px]">
                         <Image
                             src="/rachel.jpeg"
@@ -18,7 +18,12 @@ export const Header = () => {
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-col justify-center">
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-red-dark text-center md:text-left">RACHEL AUGUST</h1>
+                    <h1 className="text-6xl md:text-7xl xl:text-8xl font-bold text-red-dark text-center md:text-left">
+                        <div className="flex flex-col lg:flex-row">
+                            <div className="lg:mr-5">RACHEL</div>
+                            <div>AUGUST</div>
+                        </div>
+                    </h1>
                     <h2 className="text-2xl lg:text-3xl font-bold text-red-dark text-center md:text-left">Actress & Voiceover Artist</h2>
                 </div>
             </div>
