@@ -12,7 +12,7 @@ export const HomepageHero = () => {
                             className="rounded-full"
                             width={300}
                             height={300}
-                            alt="Picture of the author"
+                            alt="Rachel August photo"
                             preload={true}
                         />
                     </div>
