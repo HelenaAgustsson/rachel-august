@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export const StandardHero = () => {
     return (
-        <header className="mt-5 mb-10 mx-auto flex justify-center">
+        <header className="mt-5 mb-20 mx-auto flex justify-center">
             <div className="flex flex-col md:flex-row gap-5">
                 <div className="flex justify-center">
                     <div className="w-[150px] h-[150px]">
