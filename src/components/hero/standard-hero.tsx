@@ -1,7 +1,7 @@
 
 import Image from "next/image"
 
-export const Header = () => {
+export const StandardHero = () => {
     return (
         <header className="mt-10 mb-30 mx-auto flex justify-center">
             <div className="flex flex-col md:flex-row gap-5">

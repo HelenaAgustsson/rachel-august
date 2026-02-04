@@ -1,5 +1,4 @@
 import { SanityLive } from '@/sanity/lib/live'
-import { Header } from '@/components/header/header'
 import { Navbar } from '@/components/navbar/navbar'
 
 export default function FrontendLayout({
