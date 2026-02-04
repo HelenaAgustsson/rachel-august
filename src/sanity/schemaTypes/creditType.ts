@@ -11,6 +11,14 @@ export const creditType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'category',
+      type: 'string',
+    }),
+    defineField({
+      name: 'format',
+      type: 'string',
+    }),
+    defineField({
       name: 'role',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -20,5 +28,24 @@ export const creditType = defineType({
       type: 'date',
       validation: (rule) => rule.required(),
     }),
-  ],
+    defineField({
+      name: 'thumbnail',
+      type:'image',
+      validation: (rule) => rule.required(),
+      options: {
+        hotspot: true
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'attribution',
+          type: 'string'
+        })
+      ]
+    }),
+  ]
 })

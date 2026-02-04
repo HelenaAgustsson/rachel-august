@@ -48,8 +48,40 @@ export type Credit = {
   _updatedAt: string;
   _rev: string;
   title: string;
+  category?: string;
+  format?: string;
   role: string;
   date: string;
+  thumbnail: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    attribution?: string;
+    _type: "image";
+  };
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -87,22 +119,6 @@ export type SanityImageMetadata = {
   blurHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
 };
 
 export type SanityFileAsset = {
@@ -170,15 +186,31 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = Summary | Credit | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
+export type AllSanitySchemaTypes = Summary | Credit | SanityImageCrop | SanityImageHotspot | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CREDITS_QUERY
-// Query: *[_type == "credit"]{  title,  role,  date}
+// Query: *[_type == "credit"]{  title,  category,  format,  role,  date,  thumbnail}
 export type CREDITS_QUERYResult = Array<{
   title: string;
+  category: string | null;
+  format: string | null;
   role: string;
   date: string;
+  thumbnail: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    attribution?: string;
+    _type: "image";
+  };
 }>;
 // Variable: PROFILE_QUERY
 // Query: *[_type == "summary" && description=="Profile"][0]{  title,  description,  body}
@@ -209,7 +241,7 @@ export type PROFILE_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"credit\"]{\n  title,\n  role,\n  date\n}": CREDITS_QUERYResult;
+    "*[_type == \"credit\"]{\n  title,\n  category,\n  format,\n  role,\n  date,\n  thumbnail\n}": CREDITS_QUERYResult;
     "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
   }
 }
