@@ -13,7 +13,7 @@ export default async function Credits() {
 
 
     return (
-        <div>
+        <div className="p-5 bg-orange-100 text-red-dark rounded-md">
             <h3 className="text-xl lg:text-2xl font-bold">ACTING CREDITS</h3>
             <div className="mt-10">
                 {credits ? credits.map((credit, index) => <CreditLine key={index} credit={credit} />) : null}
