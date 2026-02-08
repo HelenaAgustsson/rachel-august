@@ -2,8 +2,25 @@ import {defineQuery} from 'next-sanity'
 
 export const CREDITS_QUERY = defineQuery(`*[_type == "credit"]{
   title,
-  category,
+  acting,
+  voiceover,
   format,
+  role,
+  date,
+  thumbnail
+}`)
+
+export const ACTING_QUERY = defineQuery(`*[_type == "credit" && acting==true]{
+  title,
+  type,
+  role,
+  date,
+  thumbnail
+}`)
+
+export const VOICEOVER_QUERY = defineQuery(`*[_type == "credit" && voiceover==true]{
+  title,
+  type,
   role,
   date,
   thumbnail

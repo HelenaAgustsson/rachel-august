@@ -271,10 +271,17 @@
         },
         "optional": false
       },
-      "category": {
+      "acting": {
         "type": "objectAttribute",
         "value": {
-          "type": "string"
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "voiceover": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
         },
         "optional": true
       },

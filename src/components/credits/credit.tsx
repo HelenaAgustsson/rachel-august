@@ -1,9 +1,9 @@
-import { CREDITS_QUERYResult } from "@/sanity/types"
+import { VOICEOVER_QUERYResult } from "@/sanity/types"
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image"
 
 interface CreditProps {
-    credit: NonNullable<CREDITS_QUERYResult[0]>
+    credit: NonNullable<VOICEOVER_QUERYResult[0]>
 }
 
 export default function CreditLine({ credit }: CreditProps) {
@@ -22,7 +22,7 @@ export default function CreditLine({ credit }: CreditProps) {
             </div>
             <div>
                 <div className="font-bold">{credit.title}</div>
-                {credit.format ? <div>Type: {credit.format}</div> : null}
+                {credit.type ? <div>Type: {credit.type}</div> : null}
                 <div>Role: {credit.role}</div>
                 <div>{credit.date.split("-")[0]}</div>
             </div>
