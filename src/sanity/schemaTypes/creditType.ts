@@ -11,8 +11,12 @@ export const creditType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'category',
-      type: 'string',
+      name: 'acting',
+      type: 'boolean',
+    }),
+    defineField({
+      name: 'voiceover',
+      type: 'boolean',
     }),
     defineField({
       name: 'format',
