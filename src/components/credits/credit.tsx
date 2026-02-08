@@ -22,7 +22,7 @@ export default function CreditLine({ credit }: CreditProps) {
             </div>
             <div>
                 <div className="font-bold">{credit.title}</div>
-                {credit.type ? <div>Type: {credit.type}</div> : null}
+                {credit.format ? <div>Format: {credit.format}</div> : null}
                 <div>Role: {credit.role}</div>
                 <div>{credit.date.split("-")[0]}</div>
             </div>
