@@ -1,16 +1,19 @@
 
-import { CREDITS_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch } from "@/sanity/lib/live";
 import dayjs from "dayjs";
 import CreditLine from "./credit";
+import { VOICEOVER_QUERYResult, ACTING_QUERYResult } from "@/sanity/types";
 
-export default async function Credits() {
-    const { data: credits } = await sanityFetch({ query: CREDITS_QUERY });
+interface CreditProps {
+    credits: VOICEOVER_QUERYResult | ACTING_QUERYResult
+}
 
-    credits.sort((a, b): number => {
-        return dayjs(b.date).diff(a.date);
-    })
+export default async function Credits({ credits }: CreditProps) {
 
+    credits ? (
+        credits.sort((a, b): number => {
+            return dayjs(b.date).diff(a.date);
+        })
+    ) : null
 
     return (
         <div className="p-5 bg-orange-100 text-red-dark rounded-md">

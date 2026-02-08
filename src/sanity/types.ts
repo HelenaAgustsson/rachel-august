@@ -214,6 +214,50 @@ export type CREDITS_QUERYResult = Array<{
     _type: "image";
   };
 }>;
+// Variable: ACTING_QUERY
+// Query: *[_type == "credit" && acting==true]{  title,  type,  role,  date,  thumbnail}
+export type ACTING_QUERYResult = Array<{
+  title: string;
+  type: null;
+  role: string;
+  date: string;
+  thumbnail: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    attribution?: string;
+    _type: "image";
+  };
+}>;
+// Variable: VOICEOVER_QUERY
+// Query: *[_type == "credit" && voiceover==true]{  title,  type,  role,  date,  thumbnail}
+export type VOICEOVER_QUERYResult = Array<{
+  title: string;
+  type: null;
+  role: string;
+  date: string;
+  thumbnail: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    attribution?: string;
+    _type: "image";
+  };
+}>;
 // Variable: PROFILE_QUERY
 // Query: *[_type == "summary" && description=="Profile"][0]{  title,  description,  body}
 export type PROFILE_QUERYResult = {
@@ -244,6 +288,8 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"credit\"]{\n  title,\n  acting,\n  voiceover,\n  format,\n  role,\n  date,\n  thumbnail\n}": CREDITS_QUERYResult;
+    "*[_type == \"credit\" && acting==true]{\n  title,\n  type,\n  role,\n  date,\n  thumbnail\n}": ACTING_QUERYResult;
+    "*[_type == \"credit\" && voiceover==true]{\n  title,\n  type,\n  role,\n  date,\n  thumbnail\n}": VOICEOVER_QUERYResult;
     "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
   }
 }
