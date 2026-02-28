@@ -16,7 +16,7 @@ export default function CreditLine({ credit }: CreditProps) {
                         width={150}
                         height={150}
                         alt=""
-                        className="object-contain w-[100px]"
+                        className="object-contain w-[100px] h-auto"
                     />
                 ) : null}
             </div>

@@ -3,6 +3,7 @@ import Section from "@/components/section/section";
 import Credits from "@/components/credits/credits";
 import { VOICEOVER_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
+import VideoComponent from "@/components/video";
 
 const Page = async () => {
     const { data: credits } = await sanityFetch({ query: VOICEOVER_QUERY });
@@ -11,6 +12,9 @@ const Page = async () => {
         <div>
             <StandardHero />
             <main className="w-4/5 md:w-2/3 mx-auto mb-20">
+                <Section>
+                    <VideoComponent src="https://www.youtube.com/embed/Zvj1QBWRecI" />
+                </Section>
                 <Section>
                     <h3 className="text-xl lg:text-2xl font-bold">VOICEOVER CREDITS</h3>
                     <Credits credits={credits} />
