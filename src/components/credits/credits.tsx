@@ -18,7 +18,7 @@ export default async function Credits({ credits }: CreditProps) {
 
     return (
         <div>
-            <div className="mt-15">
+            <div className="mt-10">
                 {credits ? credits.map((credit, index) => <CreditLine key={index} credit={credit} />) : null}
             </div>
         </div>
