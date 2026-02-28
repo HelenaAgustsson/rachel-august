@@ -1,9 +1,24 @@
 import {defineField, defineType} from 'sanity'
+import { StarIcon } from "@sanity/icons";
 
 export const creditType = defineType({
   name: 'credit',
   title: 'Credit',
   type: 'document',
+  icon: StarIcon,
+  preview: {
+    select: {
+      title: "title",
+      media: "thumbnail",
+    },
+    prepare({title, media}) {
+      return {
+        title: title,
+        subtitle: "Credit",
+        media: media ?? StarIcon,
+      };
+    },
+  },
   fields: [
     defineField({
       name: 'title',
