@@ -16,7 +16,7 @@ export const VOICEOVER_QUERY = defineQuery(`*[_type == "credit" && voiceover==tr
   thumbnail
 }`)
 
-export const PROFILE_QUERY = defineQuery(`*[_type == "summary" && description=="Profile"][0]{
+export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
   title,
   body
 }`)

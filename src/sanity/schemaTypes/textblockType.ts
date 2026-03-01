@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import { BlockContentIcon } from '@sanity/icons';
 
-export const summaryType = defineType({
-  name: 'summary',
-  title: 'Summary',
+export const textblockType = defineType({
+  name: 'textblock',
+  title: 'Textblock',
   type: 'object',
     icon: BlockContentIcon,
   preview: {
@@ -22,11 +22,6 @@ export const summaryType = defineType({
   fields: [
     defineField({
       name: 'title',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'description',
       type: 'string',
       validation: (rule) => rule.required(),
     }),

@@ -1,6 +1,6 @@
 
 import { PAGE_QUERYResult } from "@/sanity/types";
-import SummaryBlock from "./summary";
+import Textblock from "./textblock";
 
 type PageBuilderProps = {
     content: NonNullable<PAGE_QUERYResult>["content"];
@@ -14,7 +14,7 @@ export function PageBuilder({ content }: PageBuilderProps) {
     return (
         <main>
             {content.map((block, index) => {
-                return <SummaryBlock key={index} title={block.title} body={block.body} />
+                return <Textblock key={index} title={block.title} body={block.body} />
             })}
         </main>
     );

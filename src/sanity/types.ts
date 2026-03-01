@@ -26,7 +26,7 @@ export type Page = {
 
 export type PageBuilder = Array<{
   _key: string;
-} & Summary>;
+} & Textblock>;
 
 export type Slug = {
   _type: "slug";
@@ -34,8 +34,35 @@ export type Slug = {
   source?: string;
 };
 
-export type Summary = {
-  _type: "summary";
+export type Profile = {
+  _id: string;
+  _type: "profile";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type Textblock = {
+  _type: "textblock";
   title: string;
   description: string;
   body: Array<{
@@ -198,7 +225,7 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = Page | PageBuilder | Slug | Summary | Credit | SanityImageCrop | SanityImageHotspot | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = Page | PageBuilder | Slug | Profile | Textblock | Credit | SanityImageCrop | SanityImageHotspot | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: ACTING_QUERY
@@ -246,8 +273,28 @@ export type VOICEOVER_QUERYResult = Array<{
   };
 }>;
 // Variable: PROFILE_QUERY
-// Query: *[_type == "summary" && description=="Profile"][0]{  title,  body}
-export type PROFILE_QUERYResult = null;
+// Query: *[_type == "profile"][0]{  title,  body}
+export type PROFILE_QUERYResult = {
+  title: string;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+} | null;
 // Variable: PAGE_QUERY
 // Query: *[_type == "page" && slug.current == $slug][0]{  ...,  content[]{    ...,  }}
 export type PAGE_QUERYResult = {
@@ -260,7 +307,7 @@ export type PAGE_QUERYResult = {
   slug?: Slug;
   content: Array<{
     _key: string;
-    _type: "summary";
+    _type: "textblock";
     title: string;
     description: string;
     body: Array<{
@@ -290,7 +337,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"credit\" && acting==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": ACTING_QUERYResult;
     "*[_type == \"credit\" && voiceover==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": VOICEOVER_QUERYResult;
-    "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  body\n}": PROFILE_QUERYResult;
+    "*[_type == \"profile\"][0]{\n  title,\n  body\n}": PROFILE_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n  }\n}": PAGE_QUERYResult;
   }
 }

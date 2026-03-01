@@ -3,14 +3,12 @@ import { PAGE_QUERYResult } from "@/sanity/types";
 import Section from "./section/section";
 import { PortableText } from "next-sanity";
 
-type SummaryProps = Extract<
+type TextblockProps = Extract<
     NonNullable<NonNullable<PAGE_QUERYResult>["content"]>[number],
-    { _type: "summary" }
+    { _type: "textblock" }
 >;
 
-type SummaryBlockProps = Pick<SummaryProps, "title" | "body">
-
-const SummaryBlock = ({ title, body }: SummaryBlockProps) => {
+const Textblock = ({ title, body }: Pick<TextblockProps, "title" | "body">) => {
     return (
         <Section>
             <h4 className="text-xl font-bold mb-5">{title}</h4>
@@ -20,4 +18,4 @@ const SummaryBlock = ({ title, body }: SummaryBlockProps) => {
     )
 }
 
-export default SummaryBlock;
+export default Textblock;
