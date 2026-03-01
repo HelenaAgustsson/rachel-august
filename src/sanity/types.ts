@@ -26,7 +26,7 @@ export type Page = {
 
 export type PageBuilder = Array<{
   _key: string;
-} & Credit>;
+} & Summary>;
 
 export type Slug = {
   _type: "slug";
@@ -250,10 +250,32 @@ export type VOICEOVER_QUERYResult = Array<{
   };
 }>;
 // Variable: PROFILE_QUERY
-// Query: *[_type == "summary" && description=="Profile"][0]{  title,  description,  body}
+// Query: *[_type == "summary" && description=="Profile"][0]{  title,  body}
 export type PROFILE_QUERYResult = {
   title: string;
-  description: "Profile";
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+} | null;
+// Variable: REP_QUERY
+// Query: *[_type == "summary" && description=="Representation"][0]{  title,  body}
+export type REP_QUERYResult = {
+  title: string;
   body: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -292,7 +314,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"credit\" && acting==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": ACTING_QUERYResult;
     "*[_type == \"credit\" && voiceover==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": VOICEOVER_QUERYResult;
-    "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
+    "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  body\n}": PROFILE_QUERYResult;
+    "*[_type == \"summary\" && description==\"Representation\"][0]{\n  title,\n  body\n}": REP_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n  }\n}": PAGE_QUERYResult;
   }
 }

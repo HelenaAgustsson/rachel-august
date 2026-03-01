@@ -76,7 +76,7 @@
         },
         "rest": {
           "type": "inline",
-          "name": "credit"
+          "name": "summary"
         }
       }
     }

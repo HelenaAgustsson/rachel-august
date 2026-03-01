@@ -12,5 +12,7 @@ export default async function Page({
         params: await params,
     });
 
-    return page?.content ? <PageBuilder content={page.content} /> : null;
+    return page?.content ? (
+        <PageBuilder content={page.content} />
+    ) : null;
 }
