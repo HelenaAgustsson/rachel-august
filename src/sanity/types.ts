@@ -273,6 +273,18 @@ export type PROFILE_QUERYResult = {
     _key: string;
   }>;
 } | null;
+// Variable: PAGE_QUERY
+// Query: *[_type == "page" && slug.current == $slug][0]{  ...,  content[]{    ...,  }}
+export type PAGE_QUERYResult = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  content: Array<unknown> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -281,5 +293,6 @@ declare module "@sanity/client" {
     "*[_type == \"credit\" && acting==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": ACTING_QUERYResult;
     "*[_type == \"credit\" && voiceover==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": VOICEOVER_QUERYResult;
     "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  description,\n  body\n}": PROFILE_QUERYResult;
+    "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n  }\n}": PAGE_QUERYResult;
   }
 }

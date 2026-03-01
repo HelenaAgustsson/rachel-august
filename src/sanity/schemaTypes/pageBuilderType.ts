@@ -4,6 +4,6 @@ export const pageBuilderType = defineType({
   name: "pageBuilder",
   type: "array",
   of: [
-    defineArrayMember({ type: "credit" })
+    defineArrayMember({ type: "summary" })
   ],
 });

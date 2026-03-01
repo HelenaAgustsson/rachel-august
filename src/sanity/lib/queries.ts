@@ -21,3 +21,11 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "summary" && description=="
   description,
   body
 }`)
+
+export const PAGE_QUERY =
+  defineQuery(`*[_type == "page" && slug.current == $slug][0]{
+  ...,
+  content[]{
+    ...,
+  }
+}`);
