@@ -35,11 +35,7 @@ export type Slug = {
 };
 
 export type Summary = {
-  _id: string;
   _type: "summary";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
   title: string;
   description: string;
   body: Array<{
@@ -251,50 +247,7 @@ export type VOICEOVER_QUERYResult = Array<{
 }>;
 // Variable: PROFILE_QUERY
 // Query: *[_type == "summary" && description=="Profile"][0]{  title,  body}
-export type PROFILE_QUERYResult = {
-  title: string;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-} | null;
-// Variable: REP_QUERY
-// Query: *[_type == "summary" && description=="Representation"][0]{  title,  body}
-export type REP_QUERYResult = {
-  title: string;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-} | null;
+export type PROFILE_QUERYResult = null;
 // Variable: PAGE_QUERY
 // Query: *[_type == "page" && slug.current == $slug][0]{  ...,  content[]{    ...,  }}
 export type PAGE_QUERYResult = {
@@ -305,7 +258,30 @@ export type PAGE_QUERYResult = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  content: Array<unknown> | null;
+  content: Array<{
+    _key: string;
+    _type: "summary";
+    title: string;
+    description: string;
+    body: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+  }> | null;
 } | null;
 
 // Query TypeMap
@@ -315,7 +291,6 @@ declare module "@sanity/client" {
     "*[_type == \"credit\" && acting==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": ACTING_QUERYResult;
     "*[_type == \"credit\" && voiceover==true]{\n  title,\n  format,\n  role,\n  date,\n  thumbnail\n}": VOICEOVER_QUERYResult;
     "*[_type == \"summary\" && description==\"Profile\"][0]{\n  title,\n  body\n}": PROFILE_QUERYResult;
-    "*[_type == \"summary\" && description==\"Representation\"][0]{\n  title,\n  body\n}": REP_QUERYResult;
     "*[_type == \"page\" && slug.current == $slug][0]{\n  ...,\n  content[]{\n    ...,\n  }\n}": PAGE_QUERYResult;
   }
 }

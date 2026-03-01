@@ -21,11 +21,6 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "summary" && description=="
   body
 }`)
 
-export const REP_QUERY = defineQuery(`*[_type == "summary" && description=="Representation"][0]{
-  title,
-  body
-}`)
-
 export const PAGE_QUERY =
   defineQuery(`*[_type == "page" && slug.current == $slug][0]{
   ...,

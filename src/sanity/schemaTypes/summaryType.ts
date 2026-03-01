@@ -4,7 +4,7 @@ import { BlockContentIcon } from '@sanity/icons';
 export const summaryType = defineType({
   name: 'summary',
   title: 'Summary',
-  type: 'document',
+  type: 'object',
     icon: BlockContentIcon,
   preview: {
     select: {
